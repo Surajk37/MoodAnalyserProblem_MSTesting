@@ -1,4 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using MoodAnalyserProblem;
 
 namespace MoodAnalyzer_TestCase
@@ -51,6 +51,17 @@ namespace MoodAnalyzer_TestCase
             string result = moodAnalyser.AnalyzeMood();
             //Assert
             Assert.AreEqual("happy", result);
+        }
+        //UC2 TC2.1:-Null mood Should Return Happy
+        [TestMethod]
+        public void NullMood_Return_Happy()
+        {
+            //Arrange
+            string expected = "happy";
+            //Act
+            MoodAnalyzer moodAnalyser = new MoodAnalyzer(null);
+            //Assert
+            Assert.AreEqual(expected, moodAnalyser.AnalyzeMood());
         }
     }
 }

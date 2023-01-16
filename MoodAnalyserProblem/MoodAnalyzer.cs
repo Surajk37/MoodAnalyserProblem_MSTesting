@@ -24,11 +24,26 @@ namespace MoodAnalyserProblem
         ///if message contain Happy then return Happy
         public string AnalyzeMood()
         {
-            if (this.message.ToLower().Contains("sad")) //Contains():- This method is used to check whether the substring occurs within a given string or not.
-                return "sad";
-            else
+            try     //Block of code to be tested for error while it is being executed
+            {
+                if (this.message.Contains("sad"))// Contains():-This method is used to check whether the substring occurs within a given string or not.
+                {
+                    return "sad";
+                }      
+                else if (this.message.Contains("happy"))
+                {
+                    return "happy";
+                }
+                else if (this.message.Contains("null"))
+                {
+                    return "happy";
+                }
+            }
+            catch    // Block of code to be Executed if an error in the block
+            {
                 return "happy";
-
+            }
+            return null; // Value Return for all code path (AnalyzeMood)
         }
     }
 }
