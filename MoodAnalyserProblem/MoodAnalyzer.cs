@@ -24,26 +24,27 @@ namespace MoodAnalyserProblem
         ///if message contain Happy then return Happy
         public string AnalyzeMood()
         {
-            try     //Block of code to be tested for error while it is being executed
+            try
             {
-                if (this.message.Contains("sad"))// Contains():-This method is used to check whether the substring occurs within a given string or not.
+                if (message.ToLower().Contains("happy"))
+                {
+                    return "happy";
+                }
+                else if (message.ToLower().Equals(string.Empty))
+                {
+                    Console.WriteLine(message);
+                    throw new CustomMoodAnalyserException("Message should not be empty", CustomMoodAnalyserException.ExceptionTypes.EMPTY_MESSAGE);
+                }
+                else
                 {
                     return "sad";
-                }      
-                else if (this.message.Contains("happy"))
-                {
-                    return "happy";
-                }
-                else if (this.message.Contains("null"))
-                {
-                    return "happy";
                 }
             }
-            catch    // Block of code to be Executed if an error in the block
+            catch (NullReferenceException ex)
             {
-                return "happy";
+                throw new CustomMoodAnalyserException("Message should not be empty", CustomMoodAnalyserException.ExceptionTypes.EMPTY_MESSAGE);
             }
-            return null; // Value Return for all code path (AnalyzeMood)
+
         }
     }
 }
